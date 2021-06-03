@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBL HTI + Webtech</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='DBL.css') }}>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    
+</head>
+<body style="background-color: #00b6da">
+    <div class = "Background">
+        <h1>DBL HTI + Webtech</h1>
+    </div>
+
+    <div class="link0">
+    <a href="Visualisation.html" >Data visualisation</a>
+    
+
+  
+    <a href="Groupinfo.html" >Group info</a>
+   
+
+
+    <a href="ProgressFrontend.html" >Progress frontend</a>
+ 
+
+    <a href="Report.html" >Report</a>
+ 
+
+   
+         <a href="https://canvas.tue.nl/courses/14808">Canvas page</a>
+    </div>
+    <div>
+         <img widht=1150 height=590 src="https://ght.org.uk/sites/ght.org.uk/files/field/image/what_next.jpg" alt="404 image not found"/>
+    </div>
+
+    <div>
+        <form action="{{ url_for("testbutton") }}" method="post">
+        <input type='submit' name='test_button' value='ping'>
+        <p> Table tennis: {{ testvariable }} </p>
+        </form>
+    </div>
+
+</body>
+</html>
