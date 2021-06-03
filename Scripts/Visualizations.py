@@ -1,5 +1,4 @@
 import numpy as np
-from extract_csv import *
 #The python file for all the functions for the different visualizations
 import pandas as pd
 
