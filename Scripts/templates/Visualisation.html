@@ -41,10 +41,34 @@
     <script type="text/javascript">
         var filesnames = {{ Arraynames|tojson }};
         var myData = {{ data or [0,0,0]}}
+window.onload = initPage();
+//you can only load one function on window.onload so we needed a function that executes multiple
+function initPage() {
+    ShowDropdown();
+    ChartLoad();
+    ForceDirectedLoad();
+}
+
+function ShowDropdown() {
+
+    //Get names array from flask and create a dropdown html element
+    var select = document.getElementById("File-Dropdown");
+
+    //Create for every name in the array a new dropdown element and add it to the menu
+    for (let i = 0; i < filesnames.length; i++){
+        var opt = filesnames[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        select.appendChild(el);
+    }
+
+
+}
     </script>
     <script type="text/javascript" src="MailPerYear.js"></script>
     <script type="text/javascript" src="NodeLink.js"></script>
-
+    <script type="text/javascript" src="Matrix.js"></script>
 
         <hr />
         <div id="dvCSV">

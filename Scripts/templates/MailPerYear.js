@@ -1,27 +1,3 @@
-window.onload = initPage();
-//you can only load one function on window.onload so we needed a function that executes multiple
-function initPage() {
-    ShowDropdown();
-    ChartLoad();
-    ForceDirectedLoad();
-}
-
-function ShowDropdown() {
-
-    //Get names array from flask and create a dropdown html element
-    var select = document.getElementById("File-Dropdown");
-
-    //Create for every name in the array a new dropdown element and add it to the menu
-    for (let i = 0; i < filesnames.length; i++){
-        var opt = filesnames[i];
-        var el = document.createElement("option");
-        el.textContent = opt;
-        el.value = opt;
-        select.appendChild(el);
-    }
-
-
-}
 function ChartLoad() {
     /* This function is a chart where myData is the amount of mails sent per year (see commented data)
     * it is visualised using basic javascript and D3.js commands*/
