@@ -10,7 +10,7 @@ function ForceDirectedLoad() {
         ];*/
 
     if (NodeData !== []) { //function will start when data is present
-        for (i = 0; i < 200; i++) { //NodeData[0].length takes all info but that makes a graph with MANY nodes
+        for (i = 0; i < NodeData[0].length/10; i++) { //NodeData[0].length takes all info but that makes a graph with MANY nodes
             links.push({source: NodeData[0][i], target: NodeData[1][i]})
         }
     }
@@ -37,7 +37,7 @@ function ForceDirectedLoad() {
             .nodes(d3.values(nodes)) //add nodes
             .links(links) //add links
             .on("tick", tick) //what to do
-            .linkDistance(300) //set for proper svg size
+            .linkDistance(100) //set for proper svg size
             .start(); //kick the party off!
 
         // add the links
@@ -45,7 +45,7 @@ function ForceDirectedLoad() {
             .data(links)
             .enter().append('line')
             .attr('class', 'link')
-            .attr("stroke-width", 3)
+            .attr("stroke-width", 1)
             .style("stroke", "black");
 
         // add the nodes
@@ -53,7 +53,7 @@ function ForceDirectedLoad() {
             .data(force.nodes()) //add
             .enter().append('circle')
             .attr('class', 'node')
-            .attr('r', width * 0.03) //radius of circle
+            .attr('r', width * 0.005) //radius of circle
             .attr("fill", "red");
 
         function tick(e) {
