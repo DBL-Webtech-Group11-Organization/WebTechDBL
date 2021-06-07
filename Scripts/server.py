@@ -1,3 +1,5 @@
+#!/usr/bin/python3.8
+
 import os
 import sys
 from os.path import join, dirname, realpath

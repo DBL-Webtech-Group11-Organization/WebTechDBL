@@ -1,3 +1,5 @@
+#!/usr/bin/python3.8
+
 import numpy as np
 #The python file for all the functions for the different visualizations
 import pandas as pd
