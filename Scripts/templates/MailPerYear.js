@@ -1,23 +1,23 @@
 function ChartLoad() {
-    /* This function is a chart where myData is the amount of mails sent per year (see commented data)
+    /* This function is a chart where ChartData is the amount of mails sent per year (see commented data)
     * it is visualised using basic javascript and D3.js commands*/
 
 
 
-    //var myData = [25,1063,9323,18167,2463] //[['1998', 25], ['1999', 1063], ['2000', 9323], ['2001', 18167], ['2002', 2463]]
+    //var ChartData = [25,1063,9323,18167,2463] //[['1998', 25], ['1999', 1063], ['2000', 9323], ['2001', 18167], ['2002', 2463]]
     var x = []
     var y = []
-    if (myData !== [0,0,0]) {
-        for (i = 0; i < myData.length; i++) {
-            x.push(myData[i][0]);
-            y.push(myData[i][1]);
+    if (ChartData !== [0,0,0]) {
+        for (i = 0; i < ChartData.length; i++) {
+            x.push(ChartData[i][0]);
+            y.push(ChartData[i][1]);
         }
-        myData = y;
+        ChartData = y;
     }
     var dataCount = 50;
 
     /* for(var i = 0; i < dataCount; i++){
-        myData.push(Math.round(Math.random() * 500));
+        ChartData.push(Math.round(Math.random() * 500));
     } */
 
 
@@ -42,15 +42,15 @@ function ChartLoad() {
         .style('opacity', '0')
 
     var yScale = d3.scale.linear()
-        .domain([0, d3.max(myData)])
+        .domain([0, d3.max(ChartData)])
         .range([0, height]);
 
     var xScale = d3.scale.ordinal()
-        .domain(d3.range(0, myData.length))
+        .domain(d3.range(0, ChartData.length))
         .rangeBands([0, width])
 
     var colors = d3.scale.linear()
-        .domain([0, myData.length])
+        .domain([0, ChartData.length])
         .range(['#90ee90','#30c230'])
 
     var myChart = d3.select('#chart').append('svg')
@@ -60,7 +60,7 @@ function ChartLoad() {
             .attr('transform', 'translate('+margin.left+','+margin.top+')')
             .style('background', '#f4f4f4')
             .selectAll('rect')
-                .data(myData)
+                .data(ChartData)
                 .enter().append('rect')
                     .style('fill', function(d, i){
                         return colors(i);
@@ -102,11 +102,11 @@ function ChartLoad() {
 
 
     var vScale = d3.scale.linear()
-        .domain([0, d3.max(myData)])
+        .domain([0, d3.max(ChartData)])
         .range([height, 0]);
 
     var hScale = d3.scale.ordinal()
-        .domain(d3.range(0, myData.length))
+        .domain(d3.range(0, ChartData.length))
         .rangeBands([0, width])
 
     // V Axis
@@ -132,7 +132,7 @@ function ChartLoad() {
         .scale(hScale)
         .orient('bottom')
         .tickValues(hScale.domain().filter(function(d, i){
-            return !(i % (myData.length/myData.length)); //change this if many data points
+            return !(i % (ChartData.length/ChartData.length)); //change this if many data points
         }));
 
     // H Guide

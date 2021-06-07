@@ -86,15 +86,15 @@ def getData():
         #Process data asynchronous
         asyncio.set_event_loop(asyncio.new_event_loop())
         loop = asyncio.get_event_loop()
-        converted_data = loop.run_until_complete(makeGraphs(data))
-        force_graph_data = loop.run_until_complete(forceDirectedGraph(data))
+        barchart_data = loop.run_until_complete(makeGraphs(data))
+        forcegraph_data = loop.run_until_complete(forceDirectedGraph(data))
 
 
 
         #print(makeMatrix(data),sys.stderr)
         #print(makeGraphs(data),sys.stderr)
-    return render_template('Visualisation.html',Arraynames = csvFilesName, data = converted_data,
-                           force_graph_data = force_graph_data)
+    return render_template('Visualisation.html',Arraynames = csvFilesName, barchart_data = barchart_data,
+                           forcegraph_data = forcegraph_data)
 
 
 if __name__ == "__main__":
