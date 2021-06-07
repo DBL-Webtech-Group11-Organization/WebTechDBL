@@ -88,7 +88,6 @@ def getData():
         force_graph_data = loop.run_until_complete(forceDirectedGraph(data))
 
 
-
         #print(makeMatrix(data),sys.stderr)
         #print(makeGraphs(data),sys.stderr)
     return render_template('Visualisation.html',Arraynames = csvFilesName, data = converted_data,

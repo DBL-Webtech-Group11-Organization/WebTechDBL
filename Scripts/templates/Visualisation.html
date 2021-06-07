@@ -41,12 +41,14 @@
     <script type="text/javascript">
         var filesnames = {{ Arraynames|tojson }};
         var myData = {{ data or [0,0,0]}}
-window.onload = initPage();
-//you can only load one function on window.onload so we needed a function that executes multiple
-function initPage() {
-    ShowDropdown();
-    ChartLoad();
-    ForceDirectedLoad();
+
+        window.onload = initPage();
+        //you can only load one function on window.onload so we needed a function that executes multiple
+        function initPage() {
+            ShowDropdown();
+            ChartLoad();
+            ForceDirectedLoad();
+            DrawMatrix();
 }
 
 function ShowDropdown() {
