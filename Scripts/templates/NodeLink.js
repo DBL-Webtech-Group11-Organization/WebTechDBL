@@ -1,4 +1,4 @@
-window.onload = initPage();
+window.onload = ForceDirectedLoad()
 function ForceDirectedLoad() {
     var width = 640,
     height = 480;
