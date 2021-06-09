@@ -1,7 +1,7 @@
 window.onload = ForceDirectedLoad()
 function ForceDirectedLoad() {
-    var width = 640,
-    height = 480;
+    var width = 1500,
+    height = 1000;
     var links = []
     /*var links = [   { source: 'Baratheon', target:'Lannister' },
                     { source: 'Baratheon', target:'Stark' },
@@ -48,13 +48,31 @@ function ForceDirectedLoad() {
             .attr("stroke-width", 1)
             .style("stroke", "black");
 
+//Colors of job positions
+var job_color={};
+
+
         // add the nodes
         var node = svg.selectAll('.node')
             .data(force.nodes()) //add
             .enter().append('circle')
             .attr('class', 'node')
             .attr('r', width * 0.005) //radius of circle
-            .attr("fill", "red");
+            .attr("fill", (d) => {
+                for(var i=0;i<list_of_jobs.length; i++){
+                    job_color[i] = np.random.choice(range(256), size=3)}
+                
+                for(var j=0;j<list_of_emails.length;j++){
+                    for(var k=0;k<list_of_jobs.length;k++){
+                        if(pdData[j][3] == list_of_jobs[k])
+                            return job_color[k]
+                }}
+            });
+
+
+
+           
+
 
         function tick(e) {
 
@@ -80,4 +98,5 @@ function ForceDirectedLoad() {
                 });
 
         }
+
     }
