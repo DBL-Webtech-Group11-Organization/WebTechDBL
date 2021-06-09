@@ -13,7 +13,9 @@ async def makeGraphs(data):
 async def forceDirectedGraph(data):
     list_from_emails = await extract_column(data, 1)
     list_to_emails = await extract_column(data, 4)
-    return [list_from_emails, list_to_emails]
+    list_of_jobs = await extract_column(data, 3)
+    numbers, uniques = pd.factorize(list_of_jobs, sort=True)
+    return [list_from_emails, list_to_emails, numbers.tolist()]
 
 def makeMatrix(data):
     #We have to first find how many ID's we have in the file
