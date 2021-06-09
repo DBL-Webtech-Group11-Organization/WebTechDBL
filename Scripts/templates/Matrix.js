@@ -145,13 +145,9 @@ function D3Matrix(){
 */
 function D3Matrix(){
 
-    d3.csv("../csv_files/enron-v1.csv", function(data){
-        console.log(data[1]);
-    })
-
     var margin = {top: 100, right: 100, bottom: 100, left: 100},
-    width = 384,
-    height = 256;
+    width = 750,
+    height = 750;
 
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -182,6 +178,7 @@ function D3Matrix(){
       }
     }
 
+    var forcegraph_data = NodeData
     //reading from list what which interactions there are
      if (forcegraph_data !== [0, 0, 0]) {
         for (var i = 0; i < forcegraph_data.length; i++) {
@@ -221,7 +218,7 @@ function D3Matrix(){
     }
 
     var colorMap = d3.scale.linear()
-        .domain([-1, 0, 1])
+        .domain([0, maxValue / 2, maxValue])
         .range(["red", "white", "blue"]);
         //.range(["red", "black", "green"]);
         //.range(["brown", "#ddd", "darkgreen"]);
