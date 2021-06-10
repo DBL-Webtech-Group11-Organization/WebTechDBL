@@ -180,10 +180,11 @@ function D3Matrix(){
 
     var forcegraph_data = NodeData
     //reading from list what which interactions there are
-     if (forcegraph_data !== [0, 0, 0]) {
-        for (var i = 0; i < forcegraph_data.length; i++) {
-            p = forcegraph_data[i][0];
-            q = forcegraph_data[i][1];
+     if (forcegraph_data !== [0, 0, 0] && typeof forcegraph_data[0] != 'undefined') {
+        for (var i = 0; i < forcegraph_data[0].length; i++) {
+            p = forcegraph_data[0][i];
+            q = forcegraph_data[1][i];
+            console.log("TESt")
             matrix[p][q] = matrix[p][q]+1;
 
             if (maxValue<matrix[p][q]){
@@ -191,13 +192,13 @@ function D3Matrix(){
             }
         }
     }
-
+    /*
     //scaling the values
     for (var i = 0; i < numrows; i++) {
       for (var j = 0; j < numcols; j++) {
         matrix[i][j] = matrix[i][j]/ maxValue -1;
       }
-    }
+    }*/
 
     var x = d3.scale.ordinal()
         .domain(d3.range(numcols))
@@ -218,7 +219,7 @@ function D3Matrix(){
     }
 
     var colorMap = d3.scale.linear()
-        .domain([0, maxValue / 2, maxValue])
+        .domain([0, 2, maxValue])
         .range(["red", "white", "blue"]);
         //.range(["red", "black", "green"]);
         //.range(["brown", "#ddd", "darkgreen"]);
