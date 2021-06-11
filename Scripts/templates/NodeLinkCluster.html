@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <p><title>DBL HTI + Webtech</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <p style="color: blue;"><title>DBL HTI + Webtech</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='DBL.css') }}>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+
+</head>
+<body style="background-color: #00b6da">
+    <div class = "Background">
+        <h1>Node Clustering using the Louvain community detection algorithm</h1>
+    </div>
+    <div>
+    <a href="Visualisation.html" >Data visualisation</a>
+
+    <script type="text/javascript"></script>
+    <script src='http://d3js.org/d3.v4.min.js'></script>
+    <script src='jsLouvain.js' type='text/JavaScript'></script>
+    <script src='NodeLinkCluster.js'></script>
+        <hr />
+        <div id="dvCSV">
+        </div>
+    <p>{{ forcegraph_data }}
+    <div id="matrix"></div>
+
+    </body>
+</html>
+
+
+

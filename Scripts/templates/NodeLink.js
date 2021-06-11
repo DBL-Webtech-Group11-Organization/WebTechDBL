@@ -37,7 +37,7 @@ function ForceDirectedLoad() {
             .nodes(d3.values(nodes)) //add nodes
             .links(links) //add links
             .on("tick", tick) //what to do
-            .linkDistance(100) //set for proper svg size
+            .linkDistance(1000) //set for proper svg size
             .start(); //kick the party off!
 
         // add the links
