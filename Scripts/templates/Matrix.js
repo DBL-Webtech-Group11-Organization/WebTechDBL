@@ -183,9 +183,12 @@ function D3Matrix(){
         }
     }
 
+    var newWidth = maxID * 10
+    var newHeight = maxID * 10
+
     var margin = {top: 100, right: 100, bottom: 100, left: 100},
-    width = 750,
-    height = 750;
+    width = newWidth,
+    height = newHeight;
 
 
 
