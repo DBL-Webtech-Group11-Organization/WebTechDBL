@@ -145,9 +145,49 @@ function D3Matrix(){
 */
 function D3Matrix(){
 
+    var forcegraph_data = NodeData
+    var maxID = 0;
+
+    //creating empty matrix
+    for (var i = 0; i < forcegraph_data[0].length; i++){
+        if (maxID < forcegraph_data[0][i]){
+            maxID = forcegraph_data[0][i]
+        }
+        if(maxID < forcegraph_data[1][i]){
+            maxID = forcegraph_data[1][i]
+        }
+    }
+    var matrix = new Array(maxID + 1);
+    for (var i = 0; i <= maxID; i++){
+        matrix[i] = new Array(maxID + 1)
+        for (var j = 0; j <=maxID; j++){
+            matrix[i][j] = 0;
+        }
+    }
+
+    var p = 0;
+    var q = 0;
+    var maxValue = 0;
+
+    //reading from list what which interactions there are
+     if (forcegraph_data !== [0, 0, 0] && typeof forcegraph_data[0] != 'undefined') {
+        for (var i = 0; i < forcegraph_data[0].length; i++) {
+                p = forcegraph_data[0][i];
+                q = forcegraph_data[1][i];
+                matrix[p][q] = matrix[p - 1][q - 1] + 1;
+
+
+            if (maxValue<matrix[p][q]){
+                maxValue = matrix[p][q];
+            }
+        }
+    }
+
     var margin = {top: 100, right: 100, bottom: 100, left: 100},
     width = 750,
     height = 750;
+
+
 
     var svg = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -162,36 +202,8 @@ function D3Matrix(){
         .attr("height", height);
 
     //change later in variable amount of employees
-    var numrows = 150;
-    var numcols = 150;
-    var maxValue = 0;
-    var p = 0;
-    var q = 0;
 
 
-    //creating empty matrix
-    var matrix = new Array(numrows);
-    for (var i = 0; i < numrows; i++) {
-      matrix[i] = new Array(numcols);
-      for (var j = 0; j < numcols; j++) {
-        matrix[i][j] = 0;
-      }
-    }
-
-    var forcegraph_data = NodeData
-    //reading from list what which interactions there are
-     if (forcegraph_data !== [0, 0, 0] && typeof forcegraph_data[0] != 'undefined') {
-        for (var i = 0; i < forcegraph_data[0].length; i++) {
-            p = forcegraph_data[0][i];
-            q = forcegraph_data[1][i];
-            console.log("TESt")
-            matrix[p][q] = matrix[p][q]+1;
-
-            if (maxValue<matrix[p][q]){
-                maxValue = matrix[p][q];
-            }
-        }
-    }
     /*
     //scaling the values
     for (var i = 0; i < numrows; i++) {
@@ -200,22 +212,25 @@ function D3Matrix(){
       }
     }*/
 
+    var numrows = maxID;
+    var numcols = maxID;
+
     var x = d3.scale.ordinal()
-        .domain(d3.range(numcols))
+        .domain(d3.range(numrows))
         .rangeBands([0, width]);
 
     var y = d3.scale.ordinal()
         .domain(d3.range(numrows))
         .rangeBands([0, height]);
 
-    var rowLabels = new Array(numrows);
-    for (var i = 0; i < numrows; i++) {
-      rowLabels[i] = "Row "+(i+1);
+    var rowLabels = new Array(maxID);
+    for (var i = 0; i < maxID; i++) {
+      rowLabels[i] = "To ID"+(i+1);
     }
 
-    var columnLabels = new Array(numrows);
-    for (var i = 0; i < numcols; i++) {
-      columnLabels[i] = "Column "+(i+1);
+    var columnLabels = new Array(maxID);
+    for (var i = 0; i < maxID; i++) {
+      columnLabels[i] = "From ID"+(i+1);
     }
 
     var colorMap = d3.scale.linear()
