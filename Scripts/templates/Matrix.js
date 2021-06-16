@@ -190,6 +190,13 @@ function D3Matrix(){
     width = newWidth,
     height = newHeight;
 
+    var tooltip = d3.select('body').append('div')
+        .style('position', 'absolute')
+        .style('background', '#f4f4f4')
+        .style('padding', '5 15px')
+        .style('border', '1px #333 solid')
+        .style('border-radius', '5px')
+        .style('opacity', '0')
 
 
     var svg = d3.select("body").append("svg")
@@ -249,13 +256,13 @@ function D3Matrix(){
         .attr("transform", function(d, i) { return "translate(0," + y(i) + ")"; });
 
     row.selectAll(".cell")
-        .data(function(d) { return d; })
-      .enter().append("rect")
-        .attr("class", "cell")
-        .attr("x", function(d, i) { return x(i); })
-        .attr("width", x.rangeBand())
-        .attr("height", y.rangeBand())
-        .style("stroke-width", 0);
+                .data(function(d) { return d; })
+              .enter().append("rect")
+                .attr("class", "cell")
+                .attr("x", function(d, i) { return x(i); })
+                .attr("width", x.rangeBand())
+                .attr("height", y.rangeBand())
+                .style("stroke-width", 0);
 
     row.append("line")
         .attr("x2", width);
@@ -284,7 +291,22 @@ function D3Matrix(){
         .text(function(d, i) { return d; });
 
     row.selectAll(".cell")
-        .data(function(d, i) { return matrix[i]; })
+        .data(function(d, i) {return matrix[i]; })
         .style("fill", colorMap);
 
+
+
+    svg.selectAll(".row").selectAll(".cell").on("mouseover", function (d,i){
+        tooltip.style("opacity", 1)
+         .html("Amount of emails sent: " + d)
+         .style("left", (d3.event.pageX-25) + "px")
+         .style("top", (d3.event.pageY-75) + "px")
+    });
+
+    svg.selectAll(".row").selectAll(".cell").on('mouseout', function (d){
+        tooltip.style("opacity", 0)
+    });
+
 }
+
+
