@@ -298,9 +298,17 @@ function D3Matrix(){
 
     svg.selectAll(".row").selectAll(".cell").on("mouseover", function (d,i){
         tooltip.style("opacity", 1)
-         .html("Amount of emails sent: " + d)
+         .html("From ID:" + i + "<br/>  Amount of emails sent: " + d)
          .style("left", (d3.event.pageX-25) + "px")
          .style("top", (d3.event.pageY-75) + "px")
+    });
+
+    svg.selectAll(".column").selectAll(".cell").on("mouseover", function (d,i){
+        tooltip.style("opacity", 1)
+         .html("column" + i)
+         .style("left", (d3.event.pageX) + "px")
+         .style("top", (d3.event.pageY) + "px")
+        console.log(i)
     });
 
     svg.selectAll(".row").selectAll(".cell").on('mouseout', function (d){
