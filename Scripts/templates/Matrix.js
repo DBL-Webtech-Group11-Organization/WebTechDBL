@@ -1,3 +1,9 @@
+/*
+function amountemployees(){
+
+}
+
+*/
 window.onload = D3Matrix()
 
 function D3Matrix(){
@@ -50,17 +56,17 @@ function D3Matrix(){
             }
         }
     }
+/*
     //switching the collumns and rows:
-    for(var i = 0; i < forcegraph_data[0].length - 2 ; i++){
+    for(var i = 1; i < forcegraph_data[0].length - 2 ; i++){
         var successor = 0;
-        var t=0;
 
         for(var j = i+1; j< forcegraph_data[0].length-1; j++){
 
             //calculating squaresum for collumns i and j
             var squareSum = 0;
-            for(var k=0; k < forcegraph_data[0].length-1; k++){
-                squareSum = squareSum + (matrix[i][k]*matrix[j][k]);
+            for(var k=1; k < forcegraph_data[0].length-1; k++){
+                squareSum = squareSum + matrix[i][k];//*matrix[j][k]);
             }
 
             //compare squaresum to maxSquareSum to descide succesor of [i]
@@ -69,14 +75,52 @@ function D3Matrix(){
                 successor = j;
             }
         }
-        if (i+1 != successor){
-            for(var k = 0; k< forcegraph_data[0].length-1; k++){
-                t = matrix[i+1][k];
-                matrix[i+1][k] = matrix[succesor][k];
-                matrix[succesor][k] = t;
+
+        //if (i+1 != successor){
+            for(var k = 1; k< forcegraph_data[0].length-1; k++){
+
+                var t = matrix[i+1][k];
+                matrix[i+1][k] = matrix[successor][k];
+                matrix[successor][k] = t;
+
+                t = matrix[k][i+1];
+                matrix[k][i+1]= matrix[k][successor];
+                matrix[k][successor]= matrix[k][i+1];
+
             }
-        }
+        //}
     }
+
+*/
+
+    var newWidth = maxID * 10
+    var newHeight = maxID * 10
+
+    var margin = {top: 100, right: 100, bottom: 100, left: 100},
+    width = newWidth,
+    height = newHeight;
+
+    var tooltip = d3.select('body').append('div')
+        .style('position', 'absolute')
+        .style('background', '#f4f4f4')
+        .style('padding', '5 15px')
+        .style('border', '1px #333 solid')
+        .style('border-radius', '5px')
+        .style('opacity', '0')
+
+
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .style("margin-left", -margin.left + "px")
+      .append("g")
+        .attr("transform", "translate(" +  /*margin.left + */  150 +"," + margin.top + ")");
+
+    svg.append("rect")
+        .attr("class", "background")
+        .attr("width", width)
+        .attr("height", height);
+
 
     var x = d3.scale.ordinal()
         .domain(d3.range(numcols))
