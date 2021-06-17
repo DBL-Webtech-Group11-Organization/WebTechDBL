@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646dc7cf-7181-4e2c-b5bc-db17d6c2ab05" name="Default Changelist" comment="Moved some code from the wrong file to the right file">
-      <change beforePath="$PROJECT_DIR$/.idea/Back-end.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Back-end.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/templates/Matrix.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/templates/Matrix.js" afterDir="false" />
-    </list>
+    <list default="true" id="646dc7cf-7181-4e2c-b5bc-db17d6c2ab05" name="Default Changelist" comment="tried to group data together" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -242,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622827872636</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="tried to group data together">
+      <created>1623866720521</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1623866720521</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,29 +269,34 @@
     <MESSAGE value="gitignore added" />
     <MESSAGE value="Code structure: separete js files for different graphs" />
     <MESSAGE value="Moved some code from the wrong file to the right file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved some code from the wrong file to the right file" />
+    <MESSAGE value="tried to group data together" />
+    <option name="LAST_COMMIT_MESSAGE" value="tried to group data together" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1623322408928">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1623322408928" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1623835429904">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1623866712656">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623835429904" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1623835429903">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1623866712656" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1623866712655">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623835429903" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1623835429903">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1623866712655" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1623866712654">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623835429903" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1623835429903">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1623866712654" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1623866712655">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623835429903" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1623866712655" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1623866680892">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1623866680892" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1623677331367">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
