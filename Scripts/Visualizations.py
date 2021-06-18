@@ -31,13 +31,15 @@ async def writeJSON(data):  # This function is used to create graph.json only ha
         id = "placeholder"
         source = data[i][1]
         target = data[i][4]
-        weight = 1
+        weight = 4
         links.append({"id": id, "source": source, "target": target, "weight": weight})
     jsonstring = {"nodes": nodes, "links": links}
     with open('templates/graph.json', 'w') as outfile:
         json.dump(jsonstring, outfile, indent=4)
 
 async def forceDirectedGraph(data):
+    # Meaning numbers: 1=
+
     list_from_emails = await extract_column(data, 1)
     list_to_emails = await extract_column(data, 4)
     list_of_jobs = await extract_column(data, 3)

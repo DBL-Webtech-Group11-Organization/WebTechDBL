@@ -88,7 +88,7 @@ def getData():
         loop = asyncio.get_event_loop()
         barchart_data = loop.run_until_complete(makeGraphs(data))
         forcegraph_data = loop.run_until_complete(forceDirectedGraph(data))
-
+        writeJSON(data)
         #print(makeMatrix(data),sys.stderr)
         #print(makeGraphs(data),sys.stderr)
     return render_template('Visualisation.html',Arraynames = csvFilesName, barchart_data = barchart_data,
