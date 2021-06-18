@@ -57,7 +57,7 @@ function setup(){
             }
         }
     }
-
+    /*grouping
       //switching the collumns and rows:
     // loops trough the rows
     for (var i = 1; i < 148 ; i++){
@@ -95,7 +95,7 @@ function setup(){
          //WRITE CODE TO SWITCH LABLES!!!!!!
         //}
     }
-
+    */
     var newWidth = maxID * 10
     var newHeight = maxID * 10
 
@@ -175,7 +175,7 @@ function setup(){
                 .attr("x", function(d, i) {return x(i); })
                 .attr("width", x.rangeBand())
                 .attr("height", y.rangeBand())
-                .style("stroke-width", 0);
+                .style("stroke-width", 0.5);
 
     row.append("line")
         .attr("x2", width);
@@ -214,16 +214,19 @@ function setup(){
                     tooltip.style("opacity", 1)
                          .html("From ID:" + i + "<br/>"+ "To ID:" + y + "<br/>" +"Amount of emails sent: " + d)
                          .style("left", (d3.event.pageX-25) + "px")
-                         .style("top", (d3.event.pageY-75) + "px")
+                         .style("top", (d3.event.pageY-75) + "px");
                 }
             }
-
+        nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("stroke-width", 1.5)
+        nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("stroke", "orange")
 
 
     });
 
     matrixSVG.selectAll(".row").selectAll(".cell").on('mouseout', function (d){
         tooltip.style("opacity", 0)
+        nodeLink.selectAll(".node").attr("stroke", "none");
+        matrixSVG.selectAll(".cell").attr("stroke", "none");
     });
 
 
