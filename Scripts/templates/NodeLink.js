@@ -1,5 +1,4 @@
-window.onload = ForceDirectedLoad()
-function ForceDirectedLoad() {
+
     var width = 800,
     height = 800;
     var links = []
@@ -38,7 +37,7 @@ function ForceDirectedLoad() {
         });
 
         // add a SVG to the body for our viz
-        var svg = d3.select('body').append('svg')
+        var nodeLink = d3.select('body').append('svg')
             .attr('width', width)
             .attr('height', height);
 
@@ -53,7 +52,7 @@ function ForceDirectedLoad() {
             .start(); //kick the party off!
 
         // add the links
-        var link = svg.selectAll('.link')
+        var link = nodeLink.selectAll('.link')
             .data(links)
             .enter().append('line')
             .attr('class', 'link')
@@ -64,7 +63,7 @@ function ForceDirectedLoad() {
 var job_color={};
 var job = {};
         // add the nodes
-        var node = svg.selectAll('.node')
+        var node = nodeLink.selectAll('.node')
             .data(force.nodes()) //add
             .enter().append('circle')
             .attr('class', 'node')
@@ -88,7 +87,7 @@ var job = {};
         .style('border-radius', '5px')
         .style('opacity', '0')
 
-    svg.selectAll(".node").on("mouseover", function (d,i){
+    nodeLink.selectAll(".node").on("mouseover", function (d,i){
         tooltip.style("opacity", 1)
 
          .html("Job: " + job_list[i])
@@ -127,5 +126,3 @@ var job = {};
                 });
 
         }
-
-    }

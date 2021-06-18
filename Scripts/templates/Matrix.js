@@ -4,7 +4,6 @@ function amountemployees(){
 }
 
 */
-window.onload = D3Matrix()
 
 var cols = 10;// = amountemployees
 var rows = 10;// = amountemployees
@@ -20,130 +19,6 @@ function setup(){
          }
      }
 }
-
-function DrawMatrix(){
-    background(51);
-
-    for (var i=0; i< cols; i++) {
-        for (var j=0; j< cols; j++) {
-        var x = i * 30;
-        var y = j * 30;
-
-        fill(colors[i][j]);
-        stroke(0);
-        fill(255);
-        rect(x,y,30,30);
-        }
-    }
-}
-/*   orginele code
-function D3Matrix(){
-
-    d3.csv("../csv_files/enron-v1.csv", function(data){
-        console.log(data[1]);
-    })
-
-    var margin = {top: 100, right: 100, bottom: 100, left: 100},
-    width = 384,
-    height = 256;
-
-    var svg = d3.select("body").append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .style("margin-left", -margin.left + "px")
-      .append("g")
-        .attr("transform", "translate(" +  margin.left +   150 +"," + margin.top + ")");
-
-    svg.append("rect")
-        .attr("class", "background")
-        .attr("width", width)
-        .attr("height", height);
-
-    var numrows = 150;
-    var numcols = 150;
-
-    var matrix = new Array(numrows);
-    for (var i = 0; i < numrows; i++) {
-      matrix[i] = new Array(numcols);
-      for (var j = 0; j < numcols; j++) {
-      // dus hier waardes eraan geven!!!
-        matrix[i][j] = Math.random()*5 - 1;
-      }
-    }
-
-    var x = d3.scale.ordinal()
-        .domain(d3.range(numcols))
-        .rangeBands([0, width]);
-
-    var y = d3.scale.ordinal()
-        .domain(d3.range(numrows))
-        .rangeBands([0, height]);
-
-    var rowLabels = new Array(numrows);
-    for (var i = 0; i < numrows; i++) {
-      rowLabels[i] = "Row "+(i+1);
-    }
-
-    var columnLabels = new Array(numrows);
-    for (var i = 0; i < numcols; i++) {
-      columnLabels[i] = "Column "+(i+1);
-    }
-
-    var colorMap = d3.scale.linear()
-        .domain([-1, 0, 1])
-        .range(["red", "white", "blue"]);
-        //.range(["red", "black", "green"]);
-        //.range(["brown", "#ddd", "darkgreen"]);
-
-    var row = svg.selectAll(".row")
-        .data(matrix)
-      .enter().append("g")
-        .attr("class", "row")
-        .attr("transform", function(d, i) { return "translate(0," + y(i) + ")"; });
-
-    row.selectAll(".cell")
-        .data(function(d) { return d; })
-      .enter().append("rect")
-        .attr("class", "cell")
-        .attr("x", function(d, i) { return x(i); })
-        .attr("width", x.rangeBand())
-        .attr("height", y.rangeBand())
-        .style("stroke-width", 0);
-
-    row.append("line")
-        .attr("x2", width);
-
-    row.append("text")
-        .attr("x", 0)
-        .attr("y", y.rangeBand() / 2)
-        .attr("dy", ".32em")
-        .attr("text-anchor", "end")
-        .text(function(d, i) { return i; });
-
-    var column = svg.selectAll(".column")
-        .data(columnLabels)
-      .enter().append("g")
-        .attr("class", "column")
-        .attr("transform", function(d, i) { return "translate(" + x(i) + ")rotate(-90)"; });
-
-    column.append("line")
-        .attr("x1", -width);
-
-    column.append("text")
-        .attr("x", 6)
-        .attr("y", y.rangeBand() / 2)
-        .attr("dy", ".32em")
-        .attr("text-anchor", "start")
-        .text(function(d, i) { return d; });
-
-    row.selectAll(".cell")
-        .data(function(d, i) { return matrix[i]; })
-        .style("fill", colorMap);
-
-}
-
-*/
-function D3Matrix(){
 
     var forcegraph_data = NodeData
     var maxID = 0;
@@ -183,6 +58,44 @@ function D3Matrix(){
         }
     }
 
+      //switching the collumns and rows:
+    // loops trough the rows
+    for (var i = 1; i < 148 ; i++){
+        var maxSquareSum=0;
+        var successor = i+1;
+
+        //loops trough the columns
+        for (var j = i+1; j< 149; j++){
+
+            //calculating squareSum for specific column j
+            var squareSum = 0;
+            for (var k=1; k < 149; k++){
+                squareSum = squareSum + (matrix[i][k] * matrix[j][k]);
+            }
+
+            //compare squareSum to maxSquareSum to decide succesor of [i]
+            if (maxSquareSum < squareSum){
+                maxSquareSum = squareSum;
+                successor = j;
+            }
+        }
+
+        //if (i+1 != successor){
+            for (var m = 1; m < 149; m++){
+
+                var t = matrix[i+1][m];
+                matrix[i+1][m] = matrix[successor][m];
+                matrix[successor][m] = t;
+
+                t = matrix[m][i+1];
+                matrix[m][i+1]= matrix[m][successor];
+                matrix[m][successor]= matrix[m][i+1];
+
+            }
+         //WRITE CODE TO SWITCH LABLES!!!!!!
+        //}
+    }
+
     var newWidth = maxID * 10
     var newHeight = maxID * 10
 
@@ -199,14 +112,14 @@ function D3Matrix(){
         .style('opacity', '0')
 
 
-    var svg = d3.select("body").append("svg")
+    var matrixSVG = d3.select("body").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .style("margin-left", -margin.left + "px")
       .append("g")
-        .attr("transform", "translate(" +  /*margin.left + */  150 +"," + margin.top + ")");
+        .attr("transform", "translate(" +  /*margin.left + */  250 +"," + margin.top + ")");
 
-    svg.append("rect")
+    matrixSVG.append("rect")
         .attr("class", "background")
         .attr("width", width)
         .attr("height", height);
@@ -234,12 +147,12 @@ function D3Matrix(){
         .rangeBands([0, height]);
 
     var rowLabels = new Array(maxID);
-    for (var i = 0; i < maxID; i++) {
+    for (var i = 1; i < maxID; i++) {
       rowLabels[i] = "To ID"+(i+1);
     }
 
     var columnLabels = new Array(maxID);
-    for (var i = 0; i < maxID; i++) {
+    for (var i = 1; i < maxID; i++) {
       columnLabels[i] = "From ID"+(i+1);
     }
 
@@ -249,17 +162,17 @@ function D3Matrix(){
         //.range(["red", "black", "green"]);
         //.range(["brown", "#ddd", "darkgreen"]);
 
-    var row = svg.selectAll(".row")
+    var row = matrixSVG.selectAll(".row")
         .data(matrix)
       .enter().append("g")
         .attr("class", "row")
-        .attr("transform", function(d, i) { return "translate(0," + y(i) + ")"; });
+        .attr("transform", function(d, i) {return "translate(0," + y(i) + ")"; });
 
     row.selectAll(".cell")
                 .data(function(d) { return d; })
               .enter().append("rect")
                 .attr("class", "cell")
-                .attr("x", function(d, i) { return x(i); })
+                .attr("x", function(d, i) {return x(i); })
                 .attr("width", x.rangeBand())
                 .attr("height", y.rangeBand())
                 .style("stroke-width", 0);
@@ -272,10 +185,10 @@ function D3Matrix(){
         .attr("y", y.rangeBand() / 2)
         .attr("dy", ".32em")
         .attr("text-anchor", "end")
-        .text(function(d, i) { return i; });
+        .text(function(d, i) { return "To ID: " + i; });
 
-    var column = svg.selectAll(".column")
-        .data(columnLabels)
+    var column = matrixSVG.selectAll(".column")
+        .data(matrix)
       .enter().append("g")
         .attr("class", "column")
         .attr("transform", function(d, i) { return "translate(" + x(i) + ")rotate(-90)"; });
@@ -288,33 +201,30 @@ function D3Matrix(){
         .attr("y", y.rangeBand() / 2)
         .attr("dy", ".32em")
         .attr("text-anchor", "start")
-        .text(function(d, i) { return d; });
+        .text(function(d, i) { return "From ID: " + i; });
 
     row.selectAll(".cell")
-        .data(function(d, i) {return matrix[i]; })
+        .data(function(d, i) { return matrix[i]; })
         .style("fill", colorMap);
 
 
+    matrixSVG.selectAll(".row").selectAll(".cell").on("mouseover", function (d,i){
+            for (var y = 0; y < matrix[0].length; y++){
+                if (matrix[y][i] == d){
+                    tooltip.style("opacity", 1)
+                         .html("From ID:" + i + "<br/>"+ "To ID:" + y + "<br/>" +"Amount of emails sent: " + d)
+                         .style("left", (d3.event.pageX-25) + "px")
+                         .style("top", (d3.event.pageY-75) + "px")
+                }
+            }
 
-    svg.selectAll(".row").selectAll(".cell").on("mouseover", function (d,i){
-        tooltip.style("opacity", 1)
-         .html("From ID:" + i + "<br/>  Amount of emails sent: " + d)
-         .style("left", (d3.event.pageX-25) + "px")
-         .style("top", (d3.event.pageY-75) + "px")
+
+
     });
 
-    svg.selectAll(".column").selectAll(".cell").on("mouseover", function (d,i){
-        tooltip.style("opacity", 1)
-         .html("column" + i)
-         .style("left", (d3.event.pageX) + "px")
-         .style("top", (d3.event.pageY) + "px")
-        console.log(i)
-    });
-
-    svg.selectAll(".row").selectAll(".cell").on('mouseout', function (d){
+    matrixSVG.selectAll(".row").selectAll(".cell").on('mouseout', function (d){
         tooltip.style("opacity", 0)
     });
 
-}
 
 
