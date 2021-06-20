@@ -112,7 +112,7 @@ function setup(){
         .style('opacity', '0')
 
 
-    var matrixSVG = d3.select("body").append("svg")
+    var matrixSVG = d3.select("body").append("svg") //Select the body in HTML and append the svg type to it
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .style("margin-left", -margin.left + "px")
@@ -168,6 +168,7 @@ function setup(){
         .attr("class", "row")
         .attr("transform", function(d, i) {return "translate(0," + y(i) + ")"; });
 
+    //Create all the cells via the row
     row.selectAll(".cell")
                 .data(function(d) { return d; })
               .enter().append("rect")
@@ -180,49 +181,49 @@ function setup(){
     row.append("line")
         .attr("x2", width);
 
+    //Add the row labels
     row.append("text")
-        .attr("x", 0)
-        .attr("y", y.rangeBand() / 2)
+        .attr("x", 0) //Get correct x position
+        .attr("y", y.rangeBand() / 2) //Get correct y position
         .attr("dy", ".32em")
         .attr("text-anchor", "end")
-        .text(function(d, i) { return "To ID: " + i; });
+        .text(function(d, i) { return "To ID: " + i; }); //Loop trough the max amount of id
 
+    //Add columns to the svg
     var column = matrixSVG.selectAll(".column")
-        .data(matrix)
+        .data(matrix) //Add the data
       .enter().append("g")
         .attr("class", "column")
-        .attr("transform", function(d, i) { return "translate(" + x(i) + ")rotate(-90)"; });
+        .attr("transform", function(d, i) { return "translate(" + x(i) + ")rotate(-90)"; }); //Position the columns
 
     column.append("line")
         .attr("x1", -width);
 
-    column.append("text")
+    column.append("text") //Create the column labels (same as the row labels)
         .attr("x", 6)
         .attr("y", y.rangeBand() / 2)
         .attr("dy", ".32em")
         .attr("text-anchor", "start")
         .text(function(d, i) { return "From ID: " + i; });
 
+    //Put the data in the cells and color them according to the colormap
     row.selectAll(".cell")
         .data(function(d, i) { return matrix[i]; })
         .style("fill", colorMap);
 
 
-    matrixSVG.selectAll(".row").selectAll(".cell").on("mouseover", function (d,i){
-            for (var y = 0; y < matrix[0].length; y++){
-                if (matrix[y][i] == d){
-                    tooltip.style("opacity", 1)
-                         .html("From ID:" + i + "<br/>"+ "To ID:" + y + "<br/>" +"Amount of emails sent: " + d)
-                         .style("left", (d3.event.pageX-25) + "px")
-                         .style("top", (d3.event.pageY-75) + "px");
-                }
-            }
-        nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("stroke-width", 1.5)
-        nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("stroke", "orange")
+    matrixSVG.selectAll(".row").selectAll(".cell").on("mouseover", function (d,i){ //Mouse over a cell
+        tooltip.style("opacity", 1) //Make tooltip visible
+             .html("From ID:" + i + "<br/>"+ "To ID:" + y + "<br/>" +"Amount of emails sent: " + d) //Add html text to the tooltip
+             .style("left", (d3.event.pageX-25) + "px") //Show the tooltip at the cursor position
+             .style("top", (d3.event.pageY-75) + "px");
+        //Select all node and filter the correct node
+        nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("stroke-width", 1.5) //Select the node from nodelink and add a stroke circle
+        nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("stroke", "orange") //Make the stroke circle orange
 
 
     });
-
+    //Mouse out of the matrix so make the tooltip not visble and remove the stroke of the nodelink
     matrixSVG.selectAll(".row").selectAll(".cell").on('mouseout', function (d){
         tooltip.style("opacity", 0)
         nodeLink.selectAll(".node").attr("stroke", "none");
