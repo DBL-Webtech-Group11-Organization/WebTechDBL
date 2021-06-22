@@ -91,9 +91,80 @@ def getData():
         writeJSON(data)
         #print(makeMatrix(data),sys.stderr)
         #print(makeGraphs(data),sys.stderr)
-    return render_template('Visualisation.html',Arraynames = csvFilesName, barchart_data = barchart_data,
+    return render_template('Visualisation.html',Arraynames = csvFilesName,
                            forcegraph_data = forcegraph_data)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route('/upload_file', methods=['GET','POST'])
+def upload_file():
+    if request.method == 'POST':
+        uploadname = request.form['fileName']
+        uploaded_file = request.files['file']                   #Get the file from the request
+        filename = secure_filename(uploaded_file.filename)      #Check if someone didnt do something weird with the file
+
+        if filename != '':                                      #Check if filename is not empty
+            file_ext = os.path.splitext(filename)[1]                #Split the extensions
+            if file_ext not in app.config['UPLOAD_EXTENSIONS']:     #Check if it is a valid extension
+                #TODO Show message about wrong file and reload page
+                abort(400)
+
+            # TODO Check for same name and if so give error that file already uploaded
+            csvFilesName.append(uploadname) #Add the upload name to the array
+            csvFilesPos.append(os.path.join(app.config['UPLOAD_FOLDER'], filename)) #upload the path to the array
+            uploadedFiles.append(uploaded_file) #upload the file to the uploaded files
+            uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) #upload file to correct position
+            return render_template('Bargraph.html', Arraynames = csvFilesName)
+
+    return render_template('Bargraph.html', Arraynames = csvFilesName)
+
+@app.route('/getData', methods=['GET','POST'])
+def getData():
+
+    if request.method == 'POST':
+        fileSelect = request.form.get('File-Dropdown') #Get which files the person selected
+        filePath = "" #create an empty path
+        if fileSelect in csvFilesName: #Check if the selected file was uploaded
+            # Get the index of the selected file and add the filepath to the variable
+            index = csvFilesName.index(fileSelect)
+            filePath = csvFilesPos[index]
+
+        #Get the data from the csv file
+        data = extract_data(filePath)
+
+        #Process data asynchronous
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        loop = asyncio.get_event_loop()
+        barchart_data = loop.run_until_complete(makeGraphs(data))
+        writeJSON(data)
+    return render_template('Bargraph.html',barchart_data = barchart_data,
+                           )
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+@app.route('/upload_file', methods=['GET','POST'])
+def upload_file():
+    if request.method == 'POST':
+        uploadname = request.form['fileName']
+        uploaded_file = request.files['file']                   #Get the file from the request
+        filename = secure_filename(uploaded_file.filename)      #Check if someone didnt do something weird with the file
+
+        if filename != '':                                      #Check if filename is not empty
+            file_ext = os.path.splitext(filename)[1]                #Split the extensions
+            if file_ext not in app.config['UPLOAD_EXTENSIONS']:     #Check if it is a valid extension
+                #TODO Show message about wrong file and reload page
+                abort(400)
+
+            # TODO Check for same name and if so give error that file already uploaded
+            csvFilesName.append(uploadname) #Add the upload name to the array
+            csvFilesPos.append(os.path.join(app.config['UPLOAD_FOLDER'], filename)) #upload the path to the array
+            uploadedFiles.append(uploaded_file) #upload the file to the uploaded files
+            uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename)) #upload file to correct position
+            return render_template('MatrixSorting.html', Arraynames = csvFilesName)
+
+    return render_template('MatrixSorting.html', Arraynames = csvFilesName)
+

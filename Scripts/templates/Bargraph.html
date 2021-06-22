@@ -3,45 +3,45 @@
 <head>
 
     <p><title>DBL HTI + Webtech</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <p style="color: blue;"><title>DBL HTI + Webtech</title>
-    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='DBL.css') }}>
-    <script src="https://d3js.org/d3.v3.min.js"></script>
+        <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='DBL.css') }}>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
 
-</head>
+    </head>
 <body background="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/8fabbc7c-436b-4716-94c9-1a42d5d879d2/d92qhue-5da76253-c1cb-45db-8661-272003dbd252.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzhmYWJiYzdjLTQzNmItNDcxNi05NGM5LTFhNDJkNWQ4NzlkMlwvZDkycWh1ZS01ZGE3NjI1My1jMWNiLTQ1ZGItODY2MS0yNzIwMDNkYmQyNTIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ACHV6DZ95RSfX2LzXyMyG4DdT5JCJmuw4NFMRaEzFnM">
 
 <div class = "Background">
-    <h1>Dual visualisation</h1>
+    <h1>Bar graph Visualisation</h1>
 </div>
 
-    <div class="link0">
-        <a href="Indexpage.html" >Main page</a>
-        <a href="MatrixSorting.html" >Matrix Visualisation</a>
-        <a href="NodeLinkCluster.html" >Node Link Visualisation</a>
-        <a href="Bargraph.html" >Bar graph Visualisation</a>
+<div class="link0">
+    <a href="Indexpage.html" >Main page</a>
+    <a href="MatrixSorting.html" >Matrix Visualisation</a>
+    <a href="NodeLinkCluster.html" >Node Link Visualisation</a>
+    <a href="Visualisations.html" >Dual Visualisation</a>
 
-    </div>
+</div>
 
 
-    
-        <form method = "POST" action="{{ url_for("upload_file") }}" name="upload" enctype="multipart/form-data">
-            <input type="file" name="file" />
-            <input type="text" name="fileName">
-            <input type="submit" name="upload" value="Upload" />
-        </form>
 
-        <div>
+<form method = "POST" action="{{ url_for("upload_file") }}" name="upload" enctype="multipart/form-data">
+<input type="file" name="file" />
+<input type="text" name="fileName">
+<input type="submit" name="upload" value="Upload" />
+</form>
 
-            <form method = "POST" action="{{ url_for("getData") }}" enctype="multipart/form-data">
-                <p> Choose a file to visualise </p>
-                <select id="File-Dropdown" name="File-Dropdown"></select>
-                <input type="submit" name="visualize" value="Visualize" />
-            </form>
-	<div id="chart"></div>
-        </div>
+<div>
+
+    <form method = "POST" action="{{ url_for("getData") }}" enctype="multipart/form-data">
+    <p> Choose a file to visualise </p>
+    <select id="File-Dropdown" name="File-Dropdown"></select>
+    <input type="submit" name="visualize" value="Visualize" />
+    </form>
+    <div id="chart"></div>
+</div>
 
 <script type="text/javascript">
         var filesnames = {{ Arraynames|tojson }};
@@ -71,22 +71,17 @@
 
 
         }
-    </script>
 
-
-
-       <!-- <script type="text/javascript" src="MailPerYear.js"></script> -->
-        <script type="text/javascript" src="NodeLink.js"></script>
-        <script type="text/javascript" src="Matrix.js"></script>
-
-
-
-        <hr />
-        <div id="dvCSV">
-        </div>
-
+    <script type="text/javascript"></script>
+    <script src='MailPerYear.js'></script>
+    <hr />
+    <div id="dvCSV">
+    </div>
+    <p>{{ forcegraph_data }}
     <div id="matrix"></div>
 
-    </body>
+</body>
 </html>
+
+
 
