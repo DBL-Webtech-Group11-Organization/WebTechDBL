@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646dc7cf-7181-4e2c-b5bc-db17d6c2ab05" name="Default Changelist" comment="Moved some code from the wrong file to the right file">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/templates/Matrix.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/templates/Matrix.js" afterDir="false" />
-    </list>
+    <list default="true" id="646dc7cf-7181-4e2c-b5bc-db17d6c2ab05" name="Default Changelist" comment="Moved some code from the wrong file to the right file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -157,7 +154,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\20203481\AppData\Local\Programs\Python\Python39\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\svenm\Python\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -224,6 +221,10 @@
       <workItem from="1623874114608" duration="1162000" />
       <workItem from="1624021876100" duration="6891000" />
       <workItem from="1624178978403" duration="258000" />
+      <workItem from="1624709573975" duration="983000" />
+      <workItem from="1624727457938" duration="500000" />
+      <workItem from="1624727977527" duration="570000" />
+      <workItem from="1624729782077" duration="1135000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore added">
       <created>1622713819965</created>
@@ -274,8 +275,8 @@
     <option name="LAST_COMMIT_MESSAGE" value="Moved some code from the wrong file to the right file" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/WebTechDBL$server.coverage" NAME="server Coverage Results" MODIFIED="1624039473866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
     <SUITE FILE_PATH="coverage/WebTechDBL$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1623227874036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
+    <SUITE FILE_PATH="coverage/WebTechDBL$server.coverage" NAME="server Coverage Results" MODIFIED="1624730775378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
     <SUITE FILE_PATH="coverage/WebTechDBL$visualizations.coverage" NAME="visualizations Coverage Results" MODIFIED="1623228522239" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />
   </component>
 </project>

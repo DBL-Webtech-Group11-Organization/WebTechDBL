@@ -10,6 +10,7 @@ from werkzeug.utils import secure_filename
 import json
 import pandas as pd
 from extract_csv import extract_data
+from DataJSON import makeJSONFile
 from Visualizations import *
 import numpy as np
 import asyncio
@@ -88,9 +89,7 @@ def getData():
         loop = asyncio.get_event_loop()
         barchart_data = loop.run_until_complete(makeGraphs(data))
         forcegraph_data = loop.run_until_complete(forceDirectedGraph(data))
-        writeJSON(data)
-        #print(makeMatrix(data),sys.stderr)
-        #print(makeGraphs(data),sys.stderr)
+        print(makeJSONFile(data), sys.stderr)
     return render_template('Visualisation.html',Arraynames = csvFilesName, barchart_data = barchart_data,
                            forcegraph_data = forcegraph_data)
 
