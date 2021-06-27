@@ -207,3 +207,16 @@ var job = {};
                 });
 
         }
+
+//        circle.on("click", function() {
+//  d3.select(this).attr("r", 12);
+//});
+//var toRemove;
+//
+//.on('click', function() {
+//                if(toRemove){
+//                    d3.select(toRemove).attr("r", 6);
+//                }
+//                toRemove = this;
+//                d3.select(this).attr("r", 12);
+//            });//
