@@ -220,6 +220,7 @@ function setup(){
         //Select all node and filter the correct node
         nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("stroke-width", 1.5) //Select the node from nodelink and add a stroke circle
         nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("stroke", "orange") //Make the stroke circle orange
+         nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("r", 12)
 
 
     });
@@ -228,6 +229,7 @@ function setup(){
         tooltip.style("opacity", 0)
         nodeLink.selectAll(".node").attr("stroke", "none");
         matrixSVG.selectAll(".cell").attr("stroke", "none");
+        nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("r", 5);
     });
 
 
