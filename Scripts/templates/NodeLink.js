@@ -175,11 +175,13 @@ var job = {};
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY) + "px")
          nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("r", 12)//Select the node and increase size
+         nodeLink.selectAll(".node").filter(function (x,y){return y==i}).style("stroke", "yellow")//Change border to yellow
         });
 
         nodeLink.selectAll(".node").on("mouseout", function (d,i) {
         tooltip.style("opacity", 0);
          nodeLink.selectAll(".node").filter(function (x,y){return y==i}).attr("r", 5)//Selected node and reset size
+         nodeLink.selectAll(".node").filter(function (x,y){return y==i}).style("stroke", "black")//Revert border to black
         });
 
     // nodeLink.select(this).on("click", function(d, i) {
@@ -212,6 +214,7 @@ var job = {};
                 });
 
         }
+
 
 //        circle.on("click", function() {
 //  d3.select(this).attr("r", 12);
