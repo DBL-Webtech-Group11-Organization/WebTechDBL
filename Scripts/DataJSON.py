@@ -38,7 +38,8 @@ def makeJSONFile(data):
                     'To-Job': data[i][6],
                     'Amount-Links': 0
                 })
-
+    with open('templates/JsonData.json', 'w') as outfile:
+        json.dump(JsonData, outfile, indent=4)
     return JsonData
 
 
