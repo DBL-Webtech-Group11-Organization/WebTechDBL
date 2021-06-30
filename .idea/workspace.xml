@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="646dc7cf-7181-4e2c-b5bc-db17d6c2ab05" name="Default Changelist" comment="Moved some code from the wrong file to the right file">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/templates/NodeLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/templates/NodeLink.js" afterDir="false" />
-    </list>
+    <list default="true" id="646dc7cf-7181-4e2c-b5bc-db17d6c2ab05" name="Default Changelist" comment="Moved some code from the wrong file to the right file" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -229,6 +226,7 @@
       <workItem from="1624727977527" duration="570000" />
       <workItem from="1624729782077" duration="1135000" />
       <workItem from="1624889860902" duration="243000" />
+      <workItem from="1625057371490" duration="9000" />
     </task>
     <task id="LOCAL-00001" summary="gitignore added">
       <created>1622713819965</created>
