@@ -40,14 +40,6 @@ def user(name):                     # essentially it takes .../x the x as input 
 # def admin():          # not very relevant for us yet.
 #     return redirect(url_for("home"))
 
-@app.route("/Indexpage", methods=['GET', 'POST'])    # Check for current page if there are HTML forms with the methods Get and Post
-def testbutton():                           #Function you want to define in the HTML form
-    if request.method == "POST":            #Check if form method was post
-        pong = "PONG"
-        return render_template("Indexpage.html", testvariable = pong)              #Type pong on site
-    else:
-        return "Did not work"
-
 @app.route('/upload_file', methods=['GET','POST'])
 def upload_file():
     if request.method == 'POST':
@@ -57,9 +49,10 @@ def upload_file():
 
         if filename != '':                                      #Check if filename is not empty
             file_ext = os.path.splitext(filename)[1]                #Split the extensions
-            if file_ext not in app.config['UPLOAD_EXTENSIONS']:     #Check if it is a valid extension
+            if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+                pass
                 #TODO Show message about wrong file and reload page
-                abort(400)
+
 
             # TODO Check for same name and if so give error that file already uploaded
             csvFilesName.append(uploadname) #Add the upload name to the array
@@ -89,7 +82,7 @@ def getData():
         loop = asyncio.get_event_loop()
         barchart_data = loop.run_until_complete(makeGraphs(data))
         forcegraph_data = loop.run_until_complete(forceDirectedGraph(data))
-        print(makeJSONFile(data), sys.stderr)
+
     return render_template('Visualisation.html',Arraynames = csvFilesName, barchart_data = barchart_data,
                            forcegraph_data = forcegraph_data)
 

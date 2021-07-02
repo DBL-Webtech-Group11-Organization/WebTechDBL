@@ -43,13 +43,12 @@ function setup(){
     var p = 0;
     var q = 0;
     var maxValue = 0;
-
     //reading from list what which interactions there are
      if (forcegraph_data !== [0, 0, 0] && typeof forcegraph_data[0] != 'undefined') {
         for (var i = 0; i < forcegraph_data[0].length; i++) {
                 p = forcegraph_data[0][i];
                 q = forcegraph_data[1][i];
-                matrix[p][q] = matrix[p - 1][q - 1] + 1;
+                matrix[p][q] = matrix[p][q] + 1;
 
 
             if (maxValue<matrix[p][q]){
@@ -170,7 +169,7 @@ function setup(){
 
     //Create all the cells via the row
     row.selectAll(".cell")
-                .data(function(d) { return d; })
+                .data(function(d) {return d; })
               .enter().append("rect")
                 .attr("class", "cell")
                 .attr("x", function(d, i) {return x(i); })
@@ -214,7 +213,7 @@ function setup(){
 
     matrixSVG.selectAll(".row").selectAll(".cell").on("mouseover", function (d,i){ //Mouse over a cell
         tooltip.style("opacity", 1) //Make tooltip visible
-             .html("From ID:" + i + "<br/>"+ "To ID:" + y + "<br/>" +"Amount of emails sent: " + d) //Add html text to the tooltip
+             .html("From ID:" + i + "<br/>"+ "<br/>" +"Amount of emails sent: " + d) //Add html text to the tooltip
              .style("left", (d3.event.pageX-25) + "px") //Show the tooltip at the cursor position
              .style("top", (d3.event.pageY-75) + "px");
         //Select all node and filter the correct node
